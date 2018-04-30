@@ -1,9 +1,5 @@
 class HomeController < ApplicationController
   def index
-    if current.user
-      @user = current.user.name
-
-    end
-
+    current_user ? @user = current_user.name : @user = "Visitante"
   end
 end

@@ -1,3 +1,12 @@
-<article class="">
-  <h1>Olá @user</h1>
-</article>
+<section class="row">
+
+  <article class="jumbotron text-center">
+    <h1>Olá <%= @user %></h1>
+     <% if current_user %>
+        <h4>Crie Listas para genciar suas Tarefas de modo simples e fácil!</h4>
+     <%else%>
+        <h4>Para usar o sistema É OBRIGATÓRIO estar logado no sistema. Faça Login Para Pode Usar!</h4>
+      <%end%>
+  </article>
+
+</section>

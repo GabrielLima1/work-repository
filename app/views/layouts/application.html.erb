@@ -6,9 +6,38 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico:400italic,600italic,700italic,400,600,700">
+
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">App</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#">Lista</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user%>
+              <li><%= link_to "Perfil", edit_user_registration_path, class: "btn btn-default" %></li>
+              <li><%= link_to 'Sair', destroy_user_session_path,:method => :delete%></li>
+            <% else %>
+              <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
+              <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  <section class="container">
     <%= yield %>
+  </section>
+  <footer class="container">
+    <p>&copy; Gabriel Lima 2018</p>
+  </footer>
   </body>
 </html>
