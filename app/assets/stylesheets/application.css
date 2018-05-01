@@ -23,3 +23,7 @@
 .jumbotron{
   border-radius: 35px;
 }
+
+.left-perso{
+  padding-left: 50px !important;
+}

@@ -1,7 +1,7 @@
 <%- model_class = List -%>
 
 <h1>Lista de Tarefas- <%= link_to "Criar Novo", new_list_path, :class => 'btn btn-primary' %></h1><br>
-<h4>1 - Se sua lista estiver como <b style="color:red;">Publico</b> qualquer um pode vê-la!</h4>
+<h4>1 - Se sua lista estiver como <b style="color:red;">Pública</b> qualquer um pode vê-la!</h4>
 <!-- <h4>2 - Se sua lista estiver como <b style="color:red;">Privado</b> somente você pode vê-la</h4> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </div>
@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Criador da Lista</th>
       <th>Visibilidade</th>
       <th>Ações</th>
     </tr>
@@ -18,6 +19,7 @@
       <!-- <%= list.visibility == "Privado" ? "<tr class='red'>".html_safe : "<tr class='green'>".html_safe %> -->
       <tr>
         <td><%= list.name%></td>
+        <td><%= list.user.name%></td>
         <td><%= list.visibility%></td>
         <td>
           <%= link_to "<span class='glyphicon'>&#xe105;</span>".html_safe,
@@ -33,7 +35,7 @@
       </tr>
     <% end %>
   </tbody>
-  <%= will_paginate @lists %>
+
 </table>
 <%= link_to "Novo",new_list_path,:class => 'btn btn-primary' %>
 <a><%= link_to 'Voltar', root_path, :class => 'btn btn-default' %></a>

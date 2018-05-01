@@ -1,13 +1,42 @@
-<%= form_for @list do |l| %>
+<%= form_for @list, class: "form-inline" do |f| %>
+
+  <%= f.label :name, "Nome da Lista"%>
+  <%= f.text_field :name, placeholder: "Coisas para fazer em casa", size: 25%>
+
+  <%= f.label :visibility, "Visibilidade"%>
+  <%= f.select :visibility, ["Pública", "Privada"]%> <br/><br/>
+  <%= f.hidden_field :user_id, :value => current_user.id %><br>
+  <%= f.fields_for :works do |w|%>
+
+    <%= w.label :name, "Nome Tarefa"%>
+    <%= w.text_field :name%>
+    <%= w.check_box :_destroy%>
+    <%= w.label :_destroy, "Apagar"%><br/><br/>
+
+    <%= w.fields_for :sub_works do |sw|%>
+
+      <%= sw.label :name, "Nome Sub-Tarefa"%>
+      <%= sw.text_field :name%>
+      <%= sw.check_box :_destroy%>
+      <%= sw.label :_destroy, "Apagar"%><br/><br/>
+    <% end %><br/>
+  <% end %><br/>
+  <%= link_to "<span class='fa'>&#xf060;</span>".html_safe,lists_path, :class => 'btn btn-default'  %>
+  <%= f.button :submit, class: "btn btn-primary", label: "Salvar Lista" %>
+<% end %>
+
+<!-- <%= form_for @list do |l| %>
   <%= l.label :name%>
   <%= l.text_field :name%><br/>
   <%= l.label :visibility%>
-  <%= l.select :visibility, ["a", "b"]%><br/>
+  <%= l.select :visibility, ["Publico", "Privado"]%><br/>
   <% @list.works.each do |work| %>
     <%= field_set_tag 'Work' do %>
       <%= l.fields_for :works, work do |wl| %>
+        <%= wl.label :name %>
         <%= wl.text_field :name %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
+  <%= l.button :submit, class: "btn btn-primary", label: "Salvar Lista" %>
+<% end %> -->
