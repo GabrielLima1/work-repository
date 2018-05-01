@@ -9,14 +9,14 @@
   <%= f.fields_for :works do |w|%>
 
     <%= w.label :name, "Nome Tarefa"%>
-    <%= w.text_field :name%>
+    <%= w.text_field :name, placeholder: "Varrer o chão!"%>
     <%= w.check_box :_destroy%>
     <%= w.label :_destroy, "Apagar"%><br/><br/>
 
     <%= w.fields_for :sub_works do |sw|%>
 
       <%= sw.label :name, "Nome Sub-Tarefa"%>
-      <%= sw.text_field :name%>
+      <%= sw.text_field :name, placeholder: "Varrer a sala"%>
       <%= sw.check_box :_destroy%>
       <%= sw.label :_destroy, "Apagar"%><br/><br/>
     <% end %><br/>
