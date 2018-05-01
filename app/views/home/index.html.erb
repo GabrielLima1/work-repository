@@ -1,9 +1,9 @@
 <section class="row">
 
-  <article class="jumbotron text-center">
-    <h1>Olá <%= @user %></h1>
+  <article class="text-center">
+    <h1 class="text">Olá <%= @user %></h1><br/>
      <% if current_user %>
-        <h4>Crie Listas para genciar suas Tarefas de modo simples e fácil!</h4>
+        <h4>Crie listas para gerenciar suas Tarefas de modo simples e fácil!</h4>
      <%else%>
         <h4>Para usar o sistema É OBRIGATÓRIO estar logado no sistema. Faça Login Para Pode Usar!</h4>
       <%end%>

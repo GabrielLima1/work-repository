@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.text {
+  font-family: 'Pacifico';
+  font-size: 58px !important;
+  /*color: blue;*/
+}
+
+.jumbotron{
+  border-radius: 35px;
+}

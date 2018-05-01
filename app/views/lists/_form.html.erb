@@ -1,0 +1,13 @@
+<%= form_for @list do |l| %>
+  <%= l.label :name%>
+  <%= l.text_field :name%><br/>
+  <%= l.label :visibility%>
+  <%= l.select :visibility, ["a", "b"]%><br/>
+  <% @list.works.each do |work| %>
+    <%= field_set_tag 'Work' do %>
+      <%= l.fields_for :works, work do |wl| %>
+        <%= wl.text_field :name %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

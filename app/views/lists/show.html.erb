@@ -1,0 +1,23 @@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+#oi {
+    text-align: center;
+}
+</style>
+<%- model_class = List -%>
+<div class="jumbotron" class="container" id="oi">
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+
+  <p><strong>Nome Lista: </strong><%= @list.name %></p>
+  <p><strong>Visibilidade: </strong><%= @list.visibility %></p>
+
+
+<%= link_to "<span class='fa'>&#xf060;</span>".html_safe,lists_path, :class => 'btn btn-default'  %>
+<%= link_to "<span class='glyphicon'>&#x270f;</span>".html_safe, edit_list_path(@list), :class => 'btn btn-default' %>
+<%= link_to "<abbr title='Criar Novo'><span class='glyphicon glyphicon-plus-sign'></span></abbr>".html_safe, new_list_path, :class => 'btn btn-success' %>
+<%= link_to "<span class='glyphicon'>&#xe020</span>".html_safe, list_path(@list),:method => 'delete', :class => 'btn btn-danger' %>
+</div>
