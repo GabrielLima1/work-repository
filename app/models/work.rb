@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   belongs_to :list
-  has_many :sub_works, :dependent => :destroy
+  has_many :sub_works, dependent: :destroy
   accepts_nested_attributes_for :sub_works, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   # has_many :sub_work
 

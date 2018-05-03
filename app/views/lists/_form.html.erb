@@ -1,3 +1,12 @@
+<% if @list.errors.any? %>
+  <h3>Corrija o(s) seguinte(s) erro(s):</h3>
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @list, class: "form-inline" do |f| %>
 
   <%= f.label :name, "Nome da Lista"%>
@@ -7,19 +16,20 @@
   <%= f.select :visibility, ["Pública", "Privada"]%> <br/><br/>
   <%= f.hidden_field :user_id, :value => current_user.id %><br>
   <%= f.fields_for :works do |w|%>
-
-    <%= w.label :name, "Nome Tarefa"%>
-    <%= w.text_field :name, placeholder: "Varrer o chão!"%>
-    <%= w.check_box :_destroy%>
-    <%= w.label :_destroy, "Apagar"%><br/><br/>
-
-    <%= w.fields_for :sub_works do |sw|%>
-
-      <%= sw.label :name, "Nome Sub-Tarefa"%>
-      <%= sw.text_field :name, placeholder: "Varrer a sala"%>
-      <%= sw.check_box :_destroy%>
-      <%= sw.label :_destroy, "Apagar"%><br/><br/>
-    <% end %><br/>
+    <div class="work-fields">
+        <%= w.label :name, "Nome Tarefa"%>
+        <%= w.text_field :name, placeholder: "Varrer o chão!"%>
+        <%= w.hidden_field :_destroy%>
+        <%= link_to "[Apagar]", '#', onClick: "removeFields(this); return false;" %>
+      <%= w.fields_for :sub_works do |sw|%>
+        <div class="fields">
+          <%= sw.label :name, "Nome Sub-Tarefa"%>
+          <%= sw.text_field :name, placeholder: "Varrer a sala"%>
+          <%= sw.hidden_field :_destroy%>
+          <%= link_to "[Apagar]", '#', onClick: "removeField(this); return false;" %>
+        </div>
+      <% end %><br/>
+    </div>
   <% end %><br/>
   <%= link_to "<span class='fa'>&#xf060;</span>".html_safe,lists_path, :class => 'btn btn-default'  %>
   <%= f.button :submit, class: "btn btn-primary", label: "Salvar Lista" %>
