@@ -14,13 +14,17 @@
 //= require turbolinks
 //= require_tree .
 
-function removeField(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
-  // console.log(link);
-}
+// function removeField(link) {
+//   $(link).prev("input[type=hidden]").val("1");
+//   $(link).closest(".fields").hide();
+//
+//   // console.log(link);
+// }
 function removeFields(link) {
   // $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".work-fields").hide();
+  if ($(".apagar:visible").length==1) {
+    $(".apagar").hide();
+  }
   // console.log(link);
 }

@@ -37,9 +37,11 @@ class ListsController < ApplicationController
     @work = Work.find(@_params[:id])
     case params[:status]
     when 'enable'
-      enable
+      @work.status = true
+      redirect_back fallback_location: root_path
     when 'disable'
-      disable
+      @work.status = false
+      redirect_back fallback_location: root_path, notice: "Você Desconcluiu a Tarefa #{@work.name}"
     else
       redirect_back fallback_location: root_path
     end
