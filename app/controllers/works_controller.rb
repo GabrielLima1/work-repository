@@ -19,6 +19,9 @@ class WorksController < ApplicationController
 		respond_with @work
 	end
 
+  def enabled_status
+
+  end
   def index
     lists = List.where(user_id: current_user.id).pluck(:id) # Pegando os id's das listas do usuario logado!
     @works = Work.where(list_id: lists) # Pensar um pouco mais aqui!

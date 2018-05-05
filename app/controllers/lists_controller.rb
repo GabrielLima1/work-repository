@@ -4,10 +4,7 @@ class ListsController < ApplicationController
 
   def new
 		@list = List.new
-    3.times do
-      work = @list.works.build
-      4.times {work.sub_works.build}
-    end
+    3.times {@list.works.build}
 	end
 
 	def create
@@ -33,6 +30,34 @@ class ListsController < ApplicationController
     # .and(List.where(list_visibility: "Public"))
     #                      .paginate(:page => params[:page], :per_page => 5)
     #                      .order(created_at: :asc)
+  end
+
+
+  def enabled_status
+    @work = Work.find(@_params[:id])
+    case params[:status]
+    when 'enable'
+      enable
+    when 'disable'
+      disable
+    else
+      redirect_back fallback_location: root_path
+    end
+    #binding.pry
+    @work.save
+  end
+
+  private
+
+  def enable
+    # @list_params
+    @work.status = true
+    redirect_back fallback_location: root_path
+  end
+
+  def disable
+    @work.status = false
+    redirect_back fallback_location: root_path, alert: "Você Desconcluiu a Tarefa #{@work.name}"
   end
 
 	def destroy

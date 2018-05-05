@@ -8,7 +8,18 @@
     <!-- <p><strong>Nome Lista: </strong><%= @list.name %></p> -->
 
     <%for work in @list.works%>
-      <p><b>Tarefa: </b><%= work.name%></p>
+      <p>
+        <b>Tarefa: </b><%= work.name%>
+        <%= link_to "<abbr title='Concluir Tarefa'><span class='glyphicon glyphicon-ok'></span></abbr>".html_safe,
+              enabled_status_list_path(work, status: 'enable'),
+              method: :put,
+              class: 'btn btn-success' unless work.status == true %>
+        <%= link_to "<abbr title='Desconcluir Tarefa'><span class='glyphicon glyphicon-remove'></span></abbr>".html_safe,
+              enabled_status_list_path(work, status: 'disable'),
+              method: :put,
+              class: 'btn btn-danger' unless work.status == false %>
+      </p>
+
       <%for sub_work in work.sub_works%>
         <p><b>Sub-Tarefa: </b><%= sub_work.name%></p>
       <% end %>

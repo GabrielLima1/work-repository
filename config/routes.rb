@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :lists
+  resources :lists do
+    put :enabled_status, on: :member
+  end
   resources :works
   resources :sub_works
   resources :favorites
