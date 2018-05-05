@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :lists do
     put :enabled_status, on: :member
+    put :add_fav, on: :member
   end
   resources :works
   resources :sub_works

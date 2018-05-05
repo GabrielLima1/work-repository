@@ -11,11 +11,11 @@
   <p>
     <b>Tarefa: </b><%= work.name%>
     <%if @list.user_id == current_user.id%>
-      <%= link_to "<abbr title='Concluir Tarefa'><span class='glyphicon glyphicon-ok'></span></abbr>".html_safe,
+      <%= link_to "<abbr title='Concluir Tarefa'><span class='glyphicon'> &#xe013;</span></abbr>".html_safe,
       enabled_status_list_path(work, status: 'enable'),
       method: :put,
-      class: 'btn btn-success' unless work.status == true if current_user == @list.u %>
-      <%= link_to "<abbr title='Desconcluir Tarefa'><span class='glyphicon glyphicon-remove'></span></abbr>".html_safe,
+      class: 'btn btn-success' unless work.status == true %>
+      <%= link_to "<abbr title='Desconcluir Tarefa'><span class='glyphicon'>&#xe014;</span></abbr>".html_safe,
       enabled_status_list_path(work, status: 'disable'),
       method: :put,
       class: 'btn btn-danger' unless work.status == false %>

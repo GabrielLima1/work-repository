@@ -37,15 +37,12 @@ class ListsController < ApplicationController
     @work = Work.find(@_params[:id])
     case params[:status]
     when 'enable'
-      @work.status = true
-      redirect_back fallback_location: root_path
+      enable
     when 'disable'
-      @work.status = false
-      redirect_back fallback_location: root_path, notice: "Você Desconcluiu a Tarefa #{@work.name}"
+      disable
     else
       redirect_back fallback_location: root_path
     end
-    #binding.pry
     @work.save
   end
 
@@ -61,7 +58,9 @@ class ListsController < ApplicationController
     @work.status = false
     redirect_back fallback_location: root_path, alert: "Você Desconcluiu a Tarefa #{@work.name}"
   end
+  def add_fav
 
+  end
 	def destroy
 		@list.destroy
 		redirect_to lists_path, alert: "Lista Deletada"
