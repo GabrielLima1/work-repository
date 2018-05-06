@@ -46,7 +46,18 @@ class ListsController < ApplicationController
 
   end
 
-
+  def destroy
+    work = Work.where(list_id: @_params[:id])
+    favorite = Favorite.where(list_id: @_params[:id])
+    work.each do |w|
+      w.destroy
+    end
+    favorite.each do |f|
+      f.destroy
+    end
+    @list.destroy
+    redirect_to lists_path, notice: "Deletado"
+  end
   private
 
   def enable
@@ -79,15 +90,6 @@ class ListsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-	def destroy
-		@list.destroy
-		redirect_to lists_path, alert: "Lista Deletada"
-	rescue
-		redirect_to lists_path, alert: "Não foi possivel deletar"
-	end
-
-
-	private
 	def set_list
 		@list = List.find(params[:id])
 	end
