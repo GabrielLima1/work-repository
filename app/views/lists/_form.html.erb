@@ -1,12 +1,3 @@
-<% if @list.errors.any? %>
-<h3>Corrija o(s) seguinte(s) erro(s):</h3>
-<ul>
-  <% @list.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
-
 <%= form_for @list, class: "form-inline" do |f| %>
 <p>
   <%= f.label :name, "Lista"%>

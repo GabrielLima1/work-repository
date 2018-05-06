@@ -1,8 +1,13 @@
 <%- model_class = List -%>
+
 <div class="jumbotron text-center">
 <div class="page-header">
+<% if List.find(params[:id]).user_id == current_user.id%>
   <h1 id="oi">Editar Lista</h1>
-</div>
-<%= render :partial => 'form' %>
-
+  </div>
+  <%= render :partial => 'form' unless current_user.id == @form %>
+<%else%>
+  <h2 style="color:red;">Você não pode editar listas de outros usuários!</h2>
+  </div>
+<%end%>
 </div>
