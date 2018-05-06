@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>Auto-List</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,15 +13,17 @@
 
   </head>
 
-  <body>
+  <body id="body">
     <header>
       <nav class="navbar navbar-inverse">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand text-center" href="/">App</a>
+            <a class="navbar-brand text-center" href="/">Auto-List</a>
           </div>
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Listas', lists_path%></li>
+            <li><%= link_to "<span class='glyphicon'>&#x2b;</span> Listas".html_safe, lists_path, class: "btn btn-success text-white"%></li>
+            <li><%= link_to "<span class='glyphicon'>&#xe006;</span> Favoritos".html_safe, favorites_path, class: "btn btn-success text-white"%></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user%>

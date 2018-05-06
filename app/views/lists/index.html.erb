@@ -16,7 +16,6 @@
   </thead>
   <tbody>
     <% @lists.each do |list| %>
-      <!-- <%= list.visibility == "Privado" ? "<tr class='red'>".html_safe : "<tr class='green'>".html_safe %> -->
       <tr>
         <td><%= list.name%></td>
         <td><%= list.user.name%></td>
@@ -24,10 +23,14 @@
         <td>
           <%= link_to "<span class='glyphicon'>&#xe105;</span>".html_safe,
           list_path(list), :class => 'btn btn-default' %>
-          <%= link_to "<span class='glyphicon'>&#xe007;</span>".html_safe,
-                      add_fav_list_path(list, status: 'enable'),
-                    method: :put,
-                    class: 'btn btn-default' %>
+
+          <%= link_to "<abbr title='Adicionar aos Favoritos'><span class='glyphicon'>&#xe007;</span></abbr>".html_safe,
+                      status_list_path(list, status: 'add_fav'), method: :put, class: 'btn btn-default' unless Favorite.exists?(list_id: list.id,
+                                        user_id: current_user.id)%>
+
+          <%= link_to "<abbr title='Remover dos Favoritos'><span class='glyphicon'>&#xe006;</span></abbr>".html_safe,
+                      status_list_path(list, status: 'remove_fav'), method: :put, class: 'btn btn-default' unless !Favorite.exists?(list_id: list.id,
+                                        user_id: current_user.id)%>
 
           <%if list.user_id == current_user.id%>
 

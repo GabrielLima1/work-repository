@@ -13,17 +13,22 @@
  *= require_tree .
  *= require_self
  */
+/* TAGS */
+body{border-color: #5cb85c !important;}
+footer p {color: white;}
 
-.text {
-  font-family: 'Pacifico';
-  font-size: 58px !important;
-  /*color: blue;*/
-}
+/* CLASS */
+.text {font-family: 'Pacifico'; font-size: 58px !important; color: inherit;}
+.jumbotron{border-radius: 35px;}
+.left-perso{padding-left: 50px !important;}
+.btn-success{border-color: inherit; margin-right: 10px;}
+/* .glyphicon{font-family:none !important;} */
+.text-white{color: white !important; font-family: 'Pacifico' !important;}
+.btn-fav{margin-left: 120px; background-color: yellow;}
+.btn-success:hover{background-color: #5cb85c !important;}
+/* ID */
 
-.jumbotron{
-  border-radius: 35px;
-}
 
-.left-perso{
-  padding-left: 50px !important;
-}
+
+/* MESCLAGEM */
+a.btn-success{border-color: #5cb85c !important;}

@@ -20,6 +20,24 @@
 //
 //   // console.log(link);
 // }
+// function menu(link) {
+//   url = link.attributes.href.value
+//   console.log(url);
+//   if (url == '/lists') {
+//     setInterval(function(){
+//       $("#body").css("backgroundColor","rgb(92, 184, 92) ");
+//     },100)
+//     console.log("ad");
+//   }else if (url=='/favorites') {
+//     setInterval(function(){
+//       $("#body").css("backgroundColor","rgb(255,255,0)");
+//     },100)
+//   }
+//   setInterval(function(){
+//     $("#body").css("backgroundColor","rgb(92, 184, 92) ");
+//   },100)
+// }
+
 function removeFields(link) {
   // $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".work-fields").hide();

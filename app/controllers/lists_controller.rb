@@ -22,45 +22,63 @@ class ListsController < ApplicationController
 	end
 
   def index
-    lista_publica = List.where(visibility: "Pública")
-    lista_do_usuario_logado = List.where(user_id: 1)
-    @lists = (lista_publica + lista_do_usuario_logado).uniq
-
-    # @lists = List.where(visibility: "Pública")
-    # .and(List.where(list_visibility: "Public"))
-    #                      .paginate(:page => params[:page], :per_page => 5)
-    #                      .order(created_at: :asc)
+    @lists = List.where("visibility = 'Pública' or user_id = '#{current_user.id}'")
   end
 
 
-  def enabled_status
-    @work = Work.find(@_params[:id])
+  def status
     case params[:status]
     when 'enable'
+      @work = Work.find(@_params[:id])
       enable
     when 'disable'
+      @work = Work.find(@_params[:id])
       disable
+    when 'add_fav'
+      add_fav
+    when 'remove_fav'
+      remove_fav
+    when 'remove_favo'
+      remove_favo
     else
       redirect_back fallback_location: root_path
     end
-    @work.save
+
   end
+
 
   private
 
   def enable
     # @list_params
     @work.status = true
+    @work.save
+    redirect_back fallback_location: root_path
+  end
+
+  def add_fav
+    @fav = Favorite.create(list_id: @_params[:id], user_id: current_user.id)
+    redirect_back fallback_location: root_path
+  end
+
+  def remove_fav
+    @fav = Favorite.find_by(list_id: @_params[:id], user_id: current_user.id)
+    @fav.destroy
+    redirect_back fallback_location: root_path
+  end
+
+  def remove_favo
+    @fav = Favorite.find(@_params[:id])
+    @fav.destroy
     redirect_back fallback_location: root_path
   end
 
   def disable
     @work.status = false
-    redirect_back fallback_location: root_path, alert: "Você Desconcluiu a Tarefa #{@work.name}"
+    @work.save
+    redirect_back fallback_location: root_path
   end
-  def add_fav
 
-  end
 	def destroy
 		@list.destroy
 		redirect_to lists_path, alert: "Lista Deletada"

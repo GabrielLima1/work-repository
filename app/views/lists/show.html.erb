@@ -4,21 +4,15 @@
     <h2><b>Lista:</b> <%= @list.name %></h2>
     <h4><span class='glyphicon'>&#xe105;</span> <%= @list.visibility %></h4>
   </div>
-
-  <!-- <p><strong>Nome Lista: </strong><%= @list.name %></p> -->
-
   <%for work in @list.works%>
   <p>
     <b>Tarefa: </b><%= work.name%>
     <%if @list.user_id == current_user.id%>
       <%= link_to "<abbr title='Concluir Tarefa'><span class='glyphicon'> &#xe013;</span></abbr>".html_safe,
-      enabled_status_list_path(work, status: 'enable'),
+      status_list_path(work, status: 'enable'),
       method: :put,
       class: 'btn btn-success' unless work.status == true %>
-      <%= link_to "<abbr title='Desconcluir Tarefa'><span class='glyphicon'>&#xe014;</span></abbr>".html_safe,
-      enabled_status_list_path(work, status: 'disable'),
-      method: :put,
-      class: 'btn btn-danger' unless work.status == false %>
+      <%= "<b>Tarefa já Concluida!</b>".html_safe unless work.status == false%>
     <% end %>
   </p>
 

@@ -1,0 +1,28 @@
+<%- model_class = Favorite -%>
+
+<h1>Favoritos<br/>
+<h4>Basta clicar no botão <span class=' btn btn-default glyphicon'>&#xe006;</span> para remover dos Favoritos.<br/><br/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Lista Favoritas</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= link_to favorite.list.name, list_path(favorite.list_id)%></td>
+        <td>
+          <%= link_to "<abbr title='Remover dos Favoritos'><span class='glyphicon'>&#xe006;</span></abbr>".html_safe,
+                      status_list_path(favorite, status: 'remove_favo'), method: :put, class: 'btn btn-default'%>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+</div>
