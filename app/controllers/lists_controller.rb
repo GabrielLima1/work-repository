@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
 	def create
 		@list = List.create(list_params)
+
 		respond_with @list
 	end
 
@@ -56,7 +57,7 @@ class ListsController < ApplicationController
       f.destroy
     end
     @list.destroy
-    redirect_to lists_path, notice: "Deletado"
+    redirect_to lists_path
   end
   private
 
