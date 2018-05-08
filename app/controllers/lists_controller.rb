@@ -3,24 +3,23 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-		@list = List.new
+    @list = List.new
     3.times {@list.works.build}
-	end
+  end
 
-	def create
-		@list = List.create(list_params)
+  def create
+    @list = List.create(list_params)
+    redirect_to @list, notice: "Lista Criada!"
+  end
 
-		respond_with @list
-	end
+  def update
+    @list.update(list_params)
+    respond_with @list
+  end
 
-	def update
-		@list.update(list_params)
-    	respond_with @list
-	end
-
-	def show
-		respond_with @list
-	end
+  def show
+    respond_with @list
+  end
 
   def index
     @lists = List.where("visibility = 'Pública' or user_id = '#{current_user.id}'")
@@ -57,7 +56,7 @@ class ListsController < ApplicationController
       f.destroy
     end
     @list.destroy
-    redirect_to lists_path
+    redirect_to lists_path, notice: "Lista Excluída!"
   end
   private
 
@@ -65,24 +64,24 @@ class ListsController < ApplicationController
     # @list_params
     @work.status = true
     @work.save
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, notice: "Tarefa: #{@work.name} Concluída!"
   end
 
   def add_fav
     @fav = Favorite.create(list_id: @_params[:id], user_id: current_user.id)
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, notice: "Lista adicionada aos Favoritos!"
   end
 
   def remove_fav
     @fav = Favorite.find_by(list_id: @_params[:id], user_id: current_user.id)
     @fav.destroy
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, notice: "Lista removida dos Favoritos!"
   end
 
   def remove_favo
     @fav = Favorite.find(@_params[:id])
     @fav.destroy
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, notice: "Lista removida dos Favoritos!"
   end
 
   def disable
@@ -91,12 +90,12 @@ class ListsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-	def set_list
-		@list = List.find(params[:id])
-	end
+  def set_list
+    @list = List.find(params[:id])
+  end
 
-	def list_params
-		params.require(:list).permit(:name, :visibility, :user_id,
-                          works_attributes: [:id, :name, :status, :_destroy, sub_works_attributes: [:id, :name, :status, :_destroy]])
-	end
-end
+  def list_params
+    params.require(:list).permit(:name, :visibility, :user_id,
+      works_attributes: [:id, :name, :status, :_destroy, sub_works_attributes: [:id, :name, :status, :_destroy]])
+    end
+  end

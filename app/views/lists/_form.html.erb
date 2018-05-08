@@ -10,7 +10,7 @@
 <%= f.fields_for :works do |w| %>
 <p class="work-fields">
   <%= w.label :name, "Tarefa"%>
-  <%= w.text_field :name, placeholder: "Varrer o chão!"%>
+  <%= w.text_field :name, placeholder: "Varrer o chão!", id: "tasks"%>
   <%= w.hidden_field :_destroy%>
   <%= link_to "[Apagar]", '#', onClick: "removeFields(this); return false;", class: "apagar" %>
   <!-- <%= w.fields_for :sub_works do |sw|%>
@@ -24,5 +24,5 @@
 </p>
 <% end%><br/>
 <%= link_to "<span class='fa'>&#xf060;</span>".html_safe,lists_path, :class => 'btn btn-default'  %>
-<%= f.button :submit, class: "btn btn-primary", label: "Salvar Lista" %>
+<%= f.button 'Criar', class: "btn btn-primary" %>
 <% end %>

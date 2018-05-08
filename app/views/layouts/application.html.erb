@@ -38,6 +38,9 @@
       </nav>
     </header>
   <section class="container jumbotron left-perso">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-info" %>
+    <% end %>
     <%= yield %>
   </section>
   <footer class="container">

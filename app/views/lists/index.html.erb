@@ -1,6 +1,6 @@
 <%- model_class = List -%>
 
-<h1>Lista de Tarefas- <%= link_to "Criar Novo", new_list_path, :class => 'btn btn-primary' %></h1><br>
+<h1>Lista de Tarefas- <%= link_to "Criar Lista", new_list_path, :class => 'btn btn-primary' %></h1><br>
 <h4>1 - Se sua lista estiver como <b style="color:red;">Pública</b> qualquer um pode vê-la!</h4>
 <!-- <h4>2 - Se sua lista estiver como <b style="color:red;">Privado</b> somente você pode vê-la</h4> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -33,14 +33,10 @@
                                         user_id: current_user.id)%>
 
           <%if list.user_id == current_user.id%>
-
-            <%= link_to "<span class='glyphicon'>&#x270f;</span>".html_safe,
-            edit_list_path(list), :class => 'btn btn-default' %>
-            <%= link_to "<span class='glyphicon'>&#xe020</span>".html_safe,
-            list_path(list),
-            :method => :delete,
-            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-            :class => 'btn btn-danger' %>
+            <%= link_to "<span class='glyphicon'>&#x270f;</span>".html_safe, edit_list_path(list), :class => 'btn btn-default' %>
+            <%= link_to "<span class='glyphicon'>&#xe020</span>".html_safe, list_path(list), :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",
+                        :default => 'Deseja deletar?')) }, :class => 'btn btn-danger' %>
           <%end%>
 
         </td>
@@ -49,6 +45,6 @@
   </tbody>
 
 </table>
-<%= link_to "Novo",new_list_path,:class => 'btn btn-primary' %>
+<%= link_to "Nova",new_list_path,:class => 'btn btn-primary' %>
 <a><%= link_to 'Voltar', root_path, :class => 'btn btn-default' %></a>
 </div>
