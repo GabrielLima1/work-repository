@@ -18,4 +18,6 @@ rails s
 ```
 
 Ou se preferir: <br>
-`git clone https://github.com/GabrielLima1/work-repository.git && cd work-repository && bundle install && rake db:create db:migrate && rails s`
+```
+git clone https://github.com/GabrielLima1/work-repository.git && cd work-repository && bundle install && rake db:create db:migrate && rails s
+```
