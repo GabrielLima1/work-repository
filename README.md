@@ -10,7 +10,7 @@ Banco de Dados: <b> PostgreSql</b><br/>
 
 
 ### Você pode ver a aplicação online aqui:
-<a href="http://auto-list.herokuapp.com/">http://auto-list.herokuapp.com/</a>
+<a href="http://auto-list.herokuapp.com/" target="_blank">http://auto-list.herokuapp.com/</a>
 
 
 ## Comandos para executar localmente:
