@@ -16,5 +16,5 @@ rake db:create db:migrate
 rails s
 ```
 
-Ou se preferir:
-```git clone https://github.com/GabrielLima1/work-repository.git && bundle install && rake db:create db:migrate && rails s```
+Ou se preferir: <br>
+`git clone https://github.com/GabrielLima1/work-repository.git && bundle install && rake db:create db:migrate && rails s`
