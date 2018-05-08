@@ -9,12 +9,12 @@ Ruby -v: <b>ruby 2.2.3p173</b><br/>
 Banco de Dados: <b>PostgreSql</b><br/>
 
 Executar localmente:
-'''
+```
 git clone https://github.com/GabrielLima1/work-repository.git
 bundle install
 rake db:create db:migrate
 rails s
-'''
+```
 
 Ou se preferir:
-'git clone https://github.com/GabrielLima1/work-repository.git && bundle install && rake db:create db:migrate && rails s'
+`git clone https://github.com/GabrielLima1/work-repository.git && bundle install && rake db:create db:migrate && rails s`
