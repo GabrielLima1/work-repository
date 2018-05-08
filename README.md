@@ -12,7 +12,7 @@ Banco de Dados: <b> PostgreSql</b><br/>
 ### Você pode ver a aplicação online aqui: [http://auto-list.herokuapp.com/](http://auto-list.herokuapp.com/)
 
 
-## Comandos para executar localmente:
+### Comandos para executar localmente:
 ```
 git clone https://github.com/GabrielLima1/work-repository.git
 cd work-repository
@@ -21,6 +21,6 @@ rake db:create db:migrate
 rails s
 ```
 
-## Ou se preferir: <br>
+### Ou se preferir: <br>
 `git clone https://github.com/GabrielLima1/work-repository.git && cd work-repository && bundle install && rake db:create db:migrate && rails s
 `
