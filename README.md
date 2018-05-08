@@ -9,8 +9,7 @@ ruby -v: <b> ruby 2.2.3p173</b><br/>
 Banco de Dados: <b> PostgreSql</b><br/>
 
 
-### Você pode ver a aplicação online aqui:
-<a href="http://auto-list.herokuapp.com/" target="_blank">http://auto-list.herokuapp.com/</a>
+### Você pode ver a aplicação online aqui: [http://auto-list.herokuapp.com/](http://auto-list.herokuapp.com/)
 
 
 ## Comandos para executar localmente:
