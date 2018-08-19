@@ -18,6 +18,8 @@
 
 .byebug_history
 
+# Pasta annotate não precisa!
+/*annotate_models
 
 #Ignorando o arquivo Gemfile.lock
 *.lock

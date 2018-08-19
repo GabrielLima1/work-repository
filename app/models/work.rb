@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: works
+#
+#  id         :bigint(8)        not null, primary key
+#  name       :string
+#  status     :boolean
+#  list_id    :bigint(8)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Work < ApplicationRecord
   belongs_to :list
   has_many :sub_works, dependent: :destroy

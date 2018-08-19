@@ -19,11 +19,13 @@ gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'default_value_for'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'pry'
+  gem 'annotate'
 end
 
 group :development do
