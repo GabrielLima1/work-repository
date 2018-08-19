@@ -37,13 +37,13 @@
         </div>
       </nav>
     </header>
-  <section class="container jumbotron left-perso">
+  <section class="container wrap-all">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: "alert alert-info" %>
     <% end %>
     <%= yield %>
   </section>
-  <footer class="container">
+  <footer class="footer">
     <p>&copy; Gabriel Lima 2018</p>
   </footer>
   </body>

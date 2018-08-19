@@ -1,7 +1,34 @@
-<%- model_class = List -%>
-<div class="jumbotron text-center">
-<div class="page-header">
-  <h1>Nova Lista</h1>
+
+<div class="wrap-new">
+  <div class="wrap-title">
+    <h1>Nova Lista</h1>
+  </div>
+
+  <div class="wrap-form">
+    <%= render :partial => 'form' %>
+  </div>
 </div>
-<%= render :partial => 'form' %>
-</div>
+
+<style>
+  .wrap-new {
+    display: flex;
+    width: 100%;
+    /* background-color: green; */
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+
+  .wrap-title h1 {
+    min-height: 48px;
+    font-size: 2em;
+    color: #000000;
+    /* background-color: yellow; */
+    border-bottom: 1px solid #eee;
+  }
+
+  .wrap-form {
+    margin-top: 5%;
+    AGORA FALTA FAZER O STYLE DO FORM
+    /* background-color: blue; */
+  }
+</style>

@@ -14,19 +14,47 @@
  *= require_self
  */
 /* TAGS */
-body{border-color: #5cb85c !important;}
-footer p {color: white;}
+html { height: 100%; }
+body {
+  background-color: #ddd !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+footer p {color: white; margin-top: 10px; margin-bottom: 0px; background-color: #000000;}
 
 /* CLASS */
+.wrap-all {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border-right: 1px solid #0000000d;
+  height: 100%;
+  box-shadow: 4px 4px #0000000d;
+  flex-grow: 3;
+}
+
+.footer {
+  background-color: #000000;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 10%;
+  height: 10%;
+  justify-content: center;
+  align-items: baseline;
+}
+
+
 .text {font-family: 'Pacifico'; font-size: 58px !important; color: inherit;}
-.jumbotron{border-radius: 35px;}
-.left-perso{padding-left: 50px !important;}
+
 .btn-success{border-color: inherit; margin-right: 10px;}
 /* .glyphicon{font-family:none !important;} */
 .text-white{color: white !important; font-family: 'Pacifico' !important;}
 .btn-fav{margin-left: 120px; background-color: yellow;}
 .btn-success:hover{background-color: #5cb85c !important;}
 /* ID */
+
+container jumbotron left-perso
 
 
 
